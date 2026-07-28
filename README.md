@@ -55,23 +55,77 @@ returns it regularly.
 
 ## What deep research actually buys
 
-From one real run across twelve contacts, all source-cited:
+From one real run across twelve contacts. Every item below traces to an agent
+that completed and cited sources:
 
-- **A second SEC-registered firm** a founder had stood up six weeks earlier —
-  present in primary filings, absent from all press. No other candidate had it.
-- **A pivot** that made the obvious opener two years stale.
-- **A comp claim that did not survive posted ranges** — "up to $300k" was true at
-  two companies out of eleven; the median was less than half that.
-- **A conflict worth real money** — an intermediary refusing to name a client that
-  was probably a company already being pursued directly, where one submission
-  would have locked out the direct path for months.
+- **A pivot** that made the obvious opener eighteen months stale — the company
+  had changed both its product and its name.
+- **A demo that shipped as a product two days later**, which turned a compliment
+  into a technical observation.
+- **A stated position that contradicted the candidate's strongest evidence** —
+  the target had said publicly there is no ground truth for LLM evaluation, while
+  holding a patent on evaluation tooling for a nondeterministic system. That
+  contradiction was the conversation.
+- **A comp claim that did not survive posted ranges** — "up to $300k" held at two
+  companies out of eleven; the median was less than half.
 - **A better-matched opening posted the same day**, whose bullets described the
-  candidate's actual work better than the role being applied for.
+  candidate's actual work better than the role being applied to.
 - **Three contacts with no hook at all**, correctly reported as such rather than
   papered over.
 
-Five of those six change what you do. That is the bar for research that earned
-its cost.
+### And one finding that was not real
+
+The same run produced a specific, checkable, entirely unsourced claim: a second
+SEC-registered firm, with a registration date and a filing date. Three research
+agents had returned **zero-byte output**, and their claims were recorded anyway.
+It reached the `hook` field — the one that composes an outbound message — before
+anyone checked.
+
+That is why `source` is required by construction rather than by convention, why a
+bare-string hook is refused as `legacy_unsourced_hook`, and why the store contract
+says a zero-byte agent result must be recorded as **failed** rather than silently
+absorbed. **A gate that checks whether a hook exists does not check whether it is
+true.** Both checks are needed, and the second one is the harder half.
+
+## Running in a real product
+
+The gate is not only doctrine — it ships as an executable check in
+[Parity Studio](https://github.com/HomenShum), shaped after that repo's existing
+`evaluateNodeSlideSessionGrant`: pure, non-mutating, typed reason codes.
+
+```ts
+evaluateOutreachHookGate({ contactId, hook, evaluatedAt })
+// -> { allowed: false, reasonCode: 'legacy_unsourced_hook',
+//      explanation: '...', remedy: 'Re-record it with the URL you actually read.' }
+```
+
+Seven reason codes, and each one came from a defect that actually happened:
+`no_hook`, `legacy_unsourced_hook`, `source_not_resolvable`, `hook_not_specific`,
+`hook_stale`, `invalid_contract`, `allowed`. 12/12 tests, typechecks under
+`exactOptionalPropertyTypes`.
+
+Two rules worth stealing outright:
+
+- **Staleness is measured from when the thing happened, not when it was recorded.**
+  Recording an old item today does not make it recent; the recipient knows when
+  they posted it.
+- **`occurredAt: undefined` is allowed, not treated as stale.** Unknown is a
+  value. The gate declines to claim an age it does not have.
+
+### The surfaces it guards
+
+NodeRoom — shared workrooms where agent edits stay reviewable:
+
+![NodeRoom](media/noderoom.gif)
+
+NodeSlide — decks generated from a brief, reviewable rather than static:
+
+![NodeSlide](media/nodeslide.gif)
+
+Both captured with Playwright against the running dev servers, then encoded to
+GIF89a in pure Node — no ffmpeg, no ImageMagick, no network. The capture script
+fails the run rather than emitting a frame when a page does not render, because
+a screenshot of a blank page looks like evidence and is not.
 
 ## Install
 
