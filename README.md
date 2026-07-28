@@ -118,9 +118,13 @@ NodeRoom — shared workrooms where agent edits stay reviewable:
 
 ![NodeRoom](media/noderoom.gif)
 
+*[Watch with full fidelity →](https://youtu.be/YUpSMEkkK4Q)*
+
 NodeSlide — decks generated from a brief, reviewable rather than static:
 
 ![NodeSlide](media/nodeslide.gif)
+
+*[Watch with full fidelity →](https://youtu.be/q1CL1hCO_0Q)*
 
 Both produced by [FeatureClipStudio](https://github.com/HomenShum) — Playwright
 capture, Remotion render, ffmpeg two-pass palette. 176 and 128 frames with an
