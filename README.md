@@ -114,17 +114,25 @@ Two rules worth stealing outright:
 
 ### The surfaces it guards
 
-NodeRoom — shared workrooms where agent edits stay reviewable:
+NodeRoom — shared workrooms where agent edits stay reviewable. The clip runs the
+product's own drills: a stale agent write loses the race, and instead of
+overwriting the human it opens a `semantic_rebase` review proposal that a person
+approves:
 
 ![NodeRoom](media/noderoom.gif)
 
-*[Watch with full fidelity →](https://youtu.be/qgltieHPCQM)*
+*[Watch with full fidelity →](https://youtu.be/3N7sBxFLFOc)* · 8 steps, 24s,
+**exercises 6 of 21 interactive elements (29%)** — the other 15 are the
+architecture panel, the mobile wedge, and the live-room entry points.
 
 NodeSlide — decks generated from a brief, reviewable rather than static:
 
 ![NodeSlide](media/nodeslide.gif)
 
-*[Watch with full fidelity →](https://youtu.be/8sOEbjYiBQk)*
+*[Watch with full fidelity →](https://youtu.be/8sOEbjYiBQk)* · 4 steps, 11s,
+**exercises 4 of 91 interactive elements (4%)** — the deck editor alone has 78
+this clip never opens. Stated rather than implied: a tour that skips 87 controls
+is allowed; pretending it didn't is not.
 
 Both produced by [FeatureClipStudio](https://github.com/HomenShum) — Playwright
 capture, Remotion render, ffmpeg two-pass palette. 176 and 128 frames with an
