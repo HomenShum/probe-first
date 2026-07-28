@@ -122,10 +122,19 @@ NodeSlide — decks generated from a brief, reviewable rather than static:
 
 ![NodeSlide](media/nodeslide.gif)
 
-Both captured with Playwright against the running dev servers, then encoded to
-GIF89a in pure Node — no ffmpeg, no ImageMagick, no network. The capture script
-fails the run rather than emitting a frame when a page does not render, because
-a screenshot of a blank page looks like evidence and is not.
+Both produced by [FeatureClipStudio](https://github.com/HomenShum) — Playwright
+capture, Remotion render, ffmpeg two-pass palette. 176 and 128 frames with an
+animated cursor, step captions and a zoom-to-focus camera.
+
+The first version of this README carried 2-frame GIFs from an LZW encoder written
+by hand, because nobody checked whether a tool for this already existed. It did,
+in the same workspace, with ffmpeg already on PATH. **Check before you build** is
+the same rule this skill enforces about research — a hand-rolled substitute for
+something that already exists is the build-time version of a fabricated hook.
+
+Each capture is gated on a proof selector: if the page does not render, the run
+fails rather than emitting a frame, because a screenshot of a blank page looks
+like evidence and is not.
 
 ## Install
 
