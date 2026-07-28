@@ -129,10 +129,13 @@ NodeSlide — decks generated from a brief, reviewable rather than static:
 
 ![NodeSlide](media/nodeslide.gif)
 
-*[Watch with full fidelity →](https://youtu.be/8sOEbjYiBQk)* · 4 steps, 11s,
-**exercises 4 of 91 interactive elements (4%)** — the deck editor alone has 78
-this clip never opens. Stated rather than implied: a tour that skips 87 controls
-is allowed; pretending it didn't is not.
+*[Watch with full fidelity →](https://youtu.be/M9cc5Gj1pQE)* · 8 steps, 23s,
+**exercises 8 of 91 interactive elements (9%)**. The clip opens the inspector's
+Versions, Evidence and Trace tabs, where the product states its own limits:
+Evidence checks citation attachment but says plainly it does **not** verify
+facts, and Trace reports cost as `not recorded` rather than printing a number it
+does not have. Stated rather than implied: a tour that skips 83 controls is
+allowed; pretending it didn't is not.
 
 Both produced by [FeatureClipStudio](https://github.com/HomenShum) — Playwright
 capture, Remotion render, ffmpeg two-pass palette. 176 and 128 frames with an
