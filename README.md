@@ -90,7 +90,7 @@ true.** Both checks are needed, and the second one is the harder half.
 ## Running in a real product
 
 The gate is not only doctrine — it ships as an executable check in
-[Parity Studio](https://github.com/HomenShum), shaped after that repo's existing
+[Parity Studio](https://github.com/HomenShum/parity-studio), shaped after that repo's existing
 `evaluateNodeSlideSessionGrant`: pure, non-mutating, typed reason codes.
 
 ```ts
@@ -137,7 +137,7 @@ facts, and Trace reports cost as `not recorded` rather than printing a number it
 does not have. Stated rather than implied: a tour that skips 83 controls is
 allowed; pretending it didn't is not.
 
-Both produced by [FeatureClipStudio](https://github.com/HomenShum) — Playwright
+Both produced by [FeatureClipStudio](https://github.com/HomenShum/FeatureClipStudio) — Playwright
 capture, Remotion render, ffmpeg two-pass palette. 176 and 128 frames with an
 animated cursor, step captions and a zoom-to-focus camera.
 
